@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RevixMed — Precision Medical &amp; Dental Equipment Repair</title>
+<meta name="description" content="RevixMed repairs and calibrates medical, dental and X-ray equipment with certified technicians and genuine OEM parts. Same-day emergency response.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2438;
+    --navy-soft:#1B3A57;
+    --blue:#1E6FA8;
+    --blue-dark:#155580;
+    --teal:#14A6A6;
+    --teal-soft:#E4F5F4;
+    --orange:#EB5F26;
+    --orange-dark:#CB4E1C;
+    --bg:#FBFCFD;
+    --bg-alt:#EEF3F6;
+    --card:#FFFFFF;
+    --border:#DCE4E9;
+    --muted:#576975;
+    --font-head:'Poppins', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --shadow:0 10px 28px rgba(15,36,56,0.08);
+    --shadow-lg:0 20px 48px rgba(15,36,56,0.14);
+  }
+  [data-theme="dark"]{
+    --navy:#EAF2F7;
+    --navy-soft:#C9D8E2;
+    --bg:#0A1826;
+    --bg-alt:#0F2233;
+    --card:#122A3D;
+    --border:#20394E;
+    --muted:#93AABA;
+    --teal-soft:#0E3838;
+    --shadow:0 10px 28px rgba(0,0,0,0.35);
+    --shadow-lg:0 20px 48px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-body); color:var(--navy); background:var(--bg); line-height:1.55; transition:background .25s ease, color .25s ease;}
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer;}
+  :focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:var(--font-head); font-weight:600; color:var(--navy);}
+  .mono{font-family:var(--font-mono);}
+  .page{display:none;}
+  .page.active{display:block;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15px; padding:14px 28px; border-radius:8px; border:1.5px solid transparent; transition:all .15s ease; white-space:nowrap;}
+  .btn-primary{background:var(--blue); color:#fff;}
+  .btn-primary:hover{background:var(--blue-dark); transform:translateY(-1px);}
+  .btn-accent{background:var(--orange); color:#fff;}
+  .btn-accent:hover{background:var(--orange-dark); transform:translateY(-1px);}
+  .btn-outline{background:transparent; border-color:var(--border); color:var(--navy);}
+  .btn-outline:hover{border-color:var(--blue); color:var(--blue);}
+  .btn-sm{padding:10px 20px; font-size:13.5px;}
+  .btn:disabled{opacity:.55; cursor:not-allowed; transform:none;}
+  .section{padding:80px 0;}
+  .section-alt{background:var(--bg-alt);}
+  .eyebrow{font-family:var(--font-mono); font-size:12.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:12px; display:flex; align-items:center; gap:8px;}
+  .eyebrow::before{content:''; width:16px; height:1.5px; background:var(--teal); display:inline-block;}
+  .head-center .eyebrow{justify-content:center;}
+  .head-center .eyebrow::before{display:none;}
+ 
+  /* reveal-on-scroll */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+ 
+  /* ---------- HEADER ---------- */
+  header{position:sticky; top:0; z-index:100; background:var(--bg); border-bottom:1px solid var(--border);}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:78px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:var(--font-head); font-weight:700; font-size:21px; color:var(--navy);}
+  .logo span{color:var(--blue);}
+  .nav-links{display:flex; align-items:center; gap:30px; font-size:14.5px; font-weight:500;}
+  .nav-links a{padding:8px 2px; color:var(--navy); position:relative; cursor:pointer;}
+  .nav-links a.active{color:var(--blue);}
+  .nav-links a.active::after{content:''; position:absolute; left:0; right:0; bottom:0; height:2px; background:var(--blue);}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-right{display:flex; align-items:center; gap:10px;}
+  .icon-btn{display:flex; align-items:center; justify-content:center; width:38px; height:38px; border:1.5px solid var(--border); background:var(--card); border-radius:8px; color:var(--navy); flex-shrink:0;}
+  .icon-btn:hover{border-color:var(--blue); color:var(--blue);}
+  .cart-btn{position:relative; display:flex; align-items:center; gap:6px; border:1.5px solid var(--border); background:var(--card); padding:9px 14px; border-radius:8px; font-size:13.5px; font-weight:600; flex-shrink:0;}
+  .cart-badge{background:var(--orange); color:#fff; font-size:11px; min-width:17px; height:17px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0 4px;}
+  .nav-toggle{display:none; background:none; border:none; color:var(--navy);}
+  @media(max-width:980px){
+    .nav-links{position:fixed; top:78px; left:0; right:0; background:var(--bg); flex-direction:column; align-items:stretch; gap:0; border-bottom:1px solid var(--border); max-height:0; overflow:hidden; transition:max-height .25s ease; z-index:99;}
+    .nav-links.open{max-height:420px; overflow-y:auto;}
+    .nav-links a{padding:16px 28px; border-bottom:1px solid var(--border);}
+    .nav-toggle{display:flex; align-items:center; justify-content:center;}
+    .nav-right .btn-outline{display:none;}
+  }
+  @media(max-width:640px){
+    .nav-right{gap:6px;}
+    .nav-right .btn-accent{display:none;}
+    .cart-btn span:not(.cart-badge){display:none;}
+  }
+  @media(max-width:380px){
+    .logo{font-size:17px;}
+    .logo svg{width:30px; height:30px;}
+  }
+ 
+  /* ---------- HERO (blueprint motif) ---------- */
+  .hero{padding:60px 0; position:relative; overflow:hidden;}
+  .hero::before{
+    content:''; position:absolute; inset:0; z-index:0; opacity:.5; pointer-events:none;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 60% 55% at 20% 30%, #000 0%, transparent 70%);
+  }
+  .hero-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; position:relative; z-index:1;}
+  .hero-eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:12px; font-weight:600; color:var(--teal); background:var(--teal-soft); padding:6px 12px; border-radius:20px; margin-bottom:16px;}
+  .hero-eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+  .hero h1{font-size:clamp(28px,4.4vw,44px); line-height:1.16; margin-bottom:16px; letter-spacing:-.01em;}
+  .hero p.lede{font-size:16.5px; color:var(--muted); margin-bottom:28px; max-width:480px;}
+  .hero-ctas{display:flex; gap:12px; flex-wrap:wrap;}
+  .hero-illustration{background:var(--bg-alt); border-radius:18px; aspect-ratio:16/11; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; box-shadow:var(--shadow-lg);}
+  .hero-illustration img{width:100%; height:100%; object-fit:cover;}
+  .hero-illustration.photo::after{content:'';position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,24,38,0) 50%, rgba(10,24,38,0.6) 100%);}
+  .hero-tag{position:absolute; left:18px; bottom:16px; z-index:2; background:rgba(255,255,255,0.96); color:var(--navy); font-size:12.5px; font-weight:600; padding:8px 14px; border-radius:7px; display:flex; align-items:center; gap:8px; max-width:calc(100% - 36px);}
+  .hero-tag::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block; animation:pulse 1.8s infinite; flex-shrink:0;}
+  .hero-crosshair{position:absolute; width:34px; height:34px; z-index:2; opacity:.85;}
+  .hero-crosshair svg{width:100%; height:100%;}
+  .hc1{top:14px; right:14px;} .hc2{top:14px; left:14px;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;} .hero-illustration{order:-1;}}
+  @media(max-width:480px){
+    .hero{padding:36px 0;}
+    .hero-tag{font-size:11px; padding:7px 11px;}
+    .hero-ctas .btn{width:100%;}
+    .hero-ctas{flex-direction:column;}
+  }
+ 
+  /* ---------- STATS BAR ---------- */
+  .stats-bar{display:grid; grid-template-columns:repeat(4,1fr); border:1.5px solid var(--border); border-radius:16px; background:var(--card); box-shadow:var(--shadow); margin-top:52px; position:relative; z-index:1;}
+  .stat{padding:26px 20px; text-align:center; border-right:1px solid var(--border);}
+  .stat:last-child{border-right:none;}
+  .stat b{display:block; font-family:var(--font-head); font-size:clamp(22px,3vw,30px); color:var(--blue);}
+  .stat span{font-size:12.5px; color:var(--muted); font-weight:500;}
+  @media(max-width:760px){.stats-bar{grid-template-columns:1fr 1fr;} .stat{border-bottom:1px solid var(--border);} .stat:nth-child(2n){border-right:none;}}
+  @media(max-width:420px){.stat{padding:20px 10px;}}
+ 
+  /* ---------- PHOTO GALLERY (About) ---------- */
+  .photo-gallery{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px;}
+  .photo-card{position:relative; border-radius:14px; overflow:hidden; aspect-ratio:4/3; border:1.5px solid var(--border);}
+  .photo-card img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .photo-card:hover img{transform:scale(1.06);}
+  .photo-card::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,24,38,0) 45%, rgba(10,24,38,0.75) 100%);}
+  .photo-caption{position:absolute; left:20px; right:20px; bottom:16px; z-index:2; color:#fff;}
+  .photo-caption b{display:block; font-size:15px; font-family:var(--font-head);}
+  .photo-caption span{font-size:12.5px; color:#D8E2E7;}
+  @media(max-width:760px){.photo-gallery{grid-template-columns:1fr;}}
+ 
+  /* ---------- SERVICES ---------- */
+  .head-center{text-align:center; max-width:640px; margin:0 auto 44px;}
+  .cards-3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .service-card{border:1.5px solid var(--border); border-radius:14px; padding:30px 26px; text-align:left; display:flex; flex-direction:column; gap:12px; transition:box-shadow .2s, border-color .2s, transform .2s; background:var(--card); position:relative;}
+  .service-card:hover{box-shadow:var(--shadow-lg); border-color:var(--blue); transform:translateY(-3px);}
+  .svc-code{font-family:var(--font-mono); font-size:11px; color:var(--muted); letter-spacing:.04em;}
+  .icon-circle{width:54px; height:54px; border-radius:12px; background:var(--bg-alt); display:flex; align-items:center; justify-content:center;}
+  .icon-circle svg{width:28px; height:28px;}
+  .service-card h3{font-size:18px;}
+  .service-card p{font-size:14px; color:var(--muted); flex-grow:1;}
+  .card-link{color:var(--blue); font-weight:600; font-size:14px; display:inline-flex; align-items:center; gap:6px;}
+  .card-action{margin-top:4px;}
+  @media(max-width:880px){.cards-3{grid-template-columns:1fr;}}
+ 
+  /* ---------- CATALOG ---------- */
+  .catalog-toolbar{display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:24px; flex-wrap:wrap;}
+  .search-box{display:flex; align-items:center; gap:10px; border:1.5px solid var(--border); border-radius:9px; padding:11px 16px; background:var(--card); min-width:240px;}
+  .search-box input{border:none; outline:none; font-size:14px; width:100%; background:transparent; color:var(--navy);}
+  .cat-pills{display:flex; gap:8px; flex-wrap:wrap;}
+  .cat-pill{border:1.5px solid var(--border); background:var(--card); color:var(--muted); font-size:13px; font-weight:600; padding:9px 16px; border-radius:20px; transition:all .15s;}
+  .cat-pill.active{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .cat-pill:hover:not(.active){border-color:var(--blue); color:var(--blue);}
+  .parts-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .part-card{border:1.5px solid var(--border); border-radius:14px; overflow:hidden; background:var(--card); display:flex; flex-direction:column; transition:box-shadow .2s, transform .2s;}
+  .part-card:hover{box-shadow:var(--shadow-lg); transform:translateY(-3px);}
+  .part-thumb{background:radial-gradient(circle at 35% 30%, var(--teal-soft), var(--bg-alt)); height:150px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
+  .part-thumb svg{width:104px; height:104px;}
+  .part-thumb img{width:100%; height:100%; object-fit:cover;}
+  .part-cat-tag{position:absolute; top:10px; left:10px; font-family:var(--font-mono); font-size:10px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; background:rgba(255,255,255,0.85); color:var(--navy); padding:4px 8px; border-radius:5px; z-index:2;}
+  [data-theme="dark"] .part-cat-tag{background:rgba(10,24,38,0.75); color:var(--navy);}
+  .part-body{padding:16px 18px 18px; display:flex; flex-direction:column; gap:6px;}
+  .part-name{font-family:var(--font-head); font-weight:600; font-size:15px;}
+  .part-sku{font-family:var(--font-mono); font-size:11px; color:var(--muted);}
+  .part-price{font-size:18px; font-weight:700; color:var(--navy); margin:2px 0 8px;}
+  .add-btn{background:var(--blue); color:#fff; border:none; border-radius:8px; padding:11px; font-weight:600; font-size:13.5px; transition:background .15s;}
+  .add-btn:hover{background:var(--blue-dark);}
+  .add-btn.added{background:#1E8E5A;}
+  @media(max-width:980px){.parts-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.parts-grid{grid-template-columns:1fr;}}
+  .trust-badges{display:flex; justify-content:center; gap:44px; margin-top:52px; flex-wrap:wrap;}
+  .trust-badge{display:flex; align-items:center; gap:10px; font-size:13.5px; font-weight:600; color:var(--muted);}
+  .trust-badge svg{width:24px; height:24px; color:var(--teal);}
+  @media(max-width:520px){.trust-badges{gap:20px 28px; justify-content:flex-start;}}
+ 
+  /* ---------- TRUST / TESTIMONIAL CAROUSEL ---------- */
+  .trust-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .client-strip{display:flex; gap:14px; margin-top:26px; flex-wrap:wrap;}
+  .client-chip{display:flex; align-items:center; gap:10px; border:1.5px solid var(--border); border-radius:8px; padding:14px 18px; font-weight:600; font-size:14px; background:var(--card);}
+  .client-chip svg{width:20px; height:20px; color:var(--blue);}
+  .carousel{position:relative;}
+  .testimonial-card{border:1.5px solid var(--border); border-radius:16px; padding:32px; background:var(--card); box-shadow:var(--shadow); display:none;}
+  .testimonial-card.active{display:block;}
+  .testimonial-who{display:flex; align-items:center; gap:14px; margin-bottom:16px;}
+  .avatar-init{width:46px; height:46px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;}
+  .testimonial-who b{display:block; font-size:15px;}
+  .testimonial-who span{font-size:12.5px; color:var(--muted);}
+  .testimonial-quote{font-size:16px; color:var(--navy); line-height:1.6; margin-bottom:16px;}
+  .stars{color:#F5A623; font-size:15px; letter-spacing:2px;}
+  .carousel-dots{display:flex; gap:8px; margin-top:18px; justify-content:center;}
+  .carousel-dots button{width:8px; height:8px; border-radius:50%; border:none; background:var(--border); padding:0;}
+  .carousel-dots button.active{background:var(--blue); width:22px; border-radius:5px;}
+  @media(max-width:880px){.trust-grid{grid-template-columns:1fr;}}
+  @media(max-width:480px){.testimonial-card{padding:22px;}}
+ 
+  /* ---------- AMC CALCULATOR ---------- */
+  .amc-box{display:grid; grid-template-columns:1fr 1fr; border:1.5px solid var(--border); border-radius:16px; overflow:hidden; background:var(--card); box-shadow:var(--shadow);}
+  .amc-form{padding:38px 36px; display:flex; flex-direction:column; gap:18px;}
+  .amc-result{padding:38px 36px; background:var(--navy); color:#fff; display:flex; flex-direction:column; justify-content:center;}
+  .amc-result .amc-label{font-family:var(--font-mono); font-size:12px; color:#8FA8B8; text-transform:uppercase; letter-spacing:.06em;}
+  .amc-result .amc-price{font-family:var(--font-head); font-size:42px; font-weight:700; margin:10px 0; color:#fff;}
+  .amc-result .amc-sub{font-size:13.5px; color:#B7C4CE; margin-bottom:22px;}
+  .amc-result ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .amc-result li{font-size:13.5px; color:#D8E2E7; display:flex; align-items:center; gap:8px;}
+  .amc-result li::before{content:'✓'; color:var(--teal); font-weight:700;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:12.5px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.03em;}
+  .field input, .field select, .field textarea{border:1.5px solid var(--border); border-radius:8px; padding:12px 14px; font-size:14.5px; font-family:inherit; background:var(--bg); color:var(--navy); width:100%;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--blue);}
+  .stepper-row{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .stepper{display:flex; align-items:center; border:1.5px solid var(--border); border-radius:8px; overflow:hidden;}
+  .stepper button{width:36px; height:38px; border:none; background:var(--bg-alt); font-size:16px; font-weight:700; color:var(--navy);}
+  .stepper span{width:44px; text-align:center; font-weight:600; font-family:var(--font-mono);}
+  @media(max-width:880px){.amc-box{grid-template-columns:1fr;}}
+  @media(max-width:480px){.amc-form, .amc-result{padding:26px 22px;}}
+ 
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:740px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{width:100%; background:none; border:none; text-align:left; padding:22px 4px; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family:var(--font-head); font-size:16px; font-weight:600; color:var(--navy);}
+  .faq-q .plus{font-size:20px; color:var(--blue); transition:transform .2s; font-weight:400; flex-shrink:0;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{padding:0 4px 22px; font-size:14.5px; color:var(--muted); max-width:620px;}
+  @media(max-width:480px){.faq-q{font-size:14.5px; padding:18px 2px;}}
+ 
+  /* ---------- BOOKING FORM ---------- */
+  .booking-wrap{display:grid; grid-template-columns:0.8fr 1.2fr; border:1.5px solid var(--border); border-radius:16px; overflow:hidden; background:var(--card);}
+  .booking-side{background:var(--navy); color:#fff; padding:44px 40px;}
+  .booking-side h3{color:#fff; font-size:22px; margin-bottom:12px;}
+  .booking-side p{color:#B7C4CE; font-size:14.5px; margin-bottom:26px;}
+  .booking-step{display:flex; gap:14px; margin-bottom:18px;}
+  .booking-step .n{width:26px; height:26px; border-radius:50%; border:1.5px solid var(--orange); color:var(--orange); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; font-family:var(--font-mono);}
+  .booking-step b{display:block; font-size:14px; margin-bottom:2px;}
+  .booking-step span{font-size:13px; color:#9FB0BA;}
+  .booking-form{padding:44px 40px; display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .field.full{grid-column:1/-1;}
+  .field textarea{resize:vertical; min-height:90px;}
+  .upload-box{border:1.5px dashed var(--border); border-radius:8px; padding:18px; text-align:center; font-size:13px; color:var(--muted); cursor:pointer;}
+  .upload-box:hover{border-color:var(--blue); color:var(--blue);}
+  @media(max-width:880px){.booking-wrap, .booking-form{grid-template-columns:1fr;}}
+  @media(max-width:880px){.booking-side, .booking-form{padding:32px 26px;}}
+  @media(max-width:520px){.booking-form{grid-template-columns:1fr;}}
+ 
+  /* ---------- CHECKOUT PAGE ---------- */
+  .checkout-header{display:flex; justify-content:space-between; align-items:center; height:78px; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:8px;}
+  .checkout-steps{display:flex; align-items:center; justify-content:center; gap:10px; padding:20px 0 0; flex-wrap:wrap;}
+  .checkout-steps .cstep{display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600; color:var(--muted);}
+  .checkout-steps .cstep .csn{width:22px; height:22px; border-radius:50%; background:var(--bg-alt); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:11px;}
+  .checkout-steps .cstep.done .csn{background:var(--teal); border-color:var(--teal); color:#fff;}
+  .checkout-steps .cstep.done{color:var(--navy);}
+  .checkout-steps .cstep.current .csn{background:var(--blue); border-color:var(--blue); color:#fff;}
+  .checkout-steps .cstep.current{color:var(--blue);}
+  .checkout-steps .cline{width:36px; height:1.5px; background:var(--border);}
+  .checkout-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; padding:56px 0;}
+  .checkout-grid h2{font-size:21px; margin-bottom:22px;}
+  .billing-card{border:1.5px solid var(--border); border-radius:16px; background:var(--card); box-shadow:var(--shadow); overflow:hidden;}
+  .billing-card-head{padding:22px 26px; background:var(--bg-alt); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+  .billing-card-head span{font-family:var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--muted);}
+  .billing-card-head b{font-size:13px; color:var(--teal); display:flex; align-items:center; gap:6px;}
+  .billing-form{display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:24px 26px 28px;}
+  .billing-form .bf-full{grid-column:1/-1;}
+  .billing-form .field label{display:flex; align-items:center; gap:6px; margin-bottom:2px;}
+  .billing-form .field label svg{width:13px; height:13px; color:var(--teal);}
+  @media(max-width:620px){.billing-form{grid-template-columns:1fr;}}
+  .order-box{border:1.5px solid var(--border); border-radius:16px; padding:0; background:var(--card); height:fit-content; box-shadow:var(--shadow); overflow:hidden;}
+  .order-box-head{padding:22px 26px; background:var(--bg-alt); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;}
+  .order-box-head span{font-family:var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--muted);}
+  .order-box-head b{font-size:13px; color:var(--teal); display:flex; align-items:center; gap:6px;}
+  .order-box-body{padding:22px 26px 26px;}
+  .order-row{display:flex; justify-content:space-between; align-items:center; font-size:14px; padding:10px 0; border-bottom:1px solid var(--border); gap:10px;}
+  .order-row.total{font-weight:700; font-size:17px; border-bottom:none; padding-top:14px;}
+  .order-row .oi-icon{width:26px; height:26px; border-radius:6px; background:var(--teal-soft); color:var(--teal); display:inline-flex; align-items:center; justify-content:center; margin-right:10px; flex-shrink:0;}
+  .order-row .oi-icon svg{width:14px; height:14px;}
+  .order-row .oi-name{display:flex; align-items:center; min-width:0;}
+ 
+  .pay-tabs{display:flex; gap:8px; margin-top:22px; padding:4px; background:var(--bg-alt); border-radius:11px;}
+  .pay-tab{flex:1; text-align:center; border:none; border-radius:8px; padding:11px; font-weight:600; font-size:13.5px; background:transparent; color:var(--muted); display:flex; align-items:center; justify-content:center; gap:8px; transition:all .18s ease;}
+  .pay-tab.active{background:var(--card); color:var(--blue); box-shadow:0 3px 10px rgba(15,36,56,0.1);}
+  .pay-tab svg{width:16px; height:16px;}
+  .pay-panel{display:none; margin-top:16px; flex-direction:column; gap:12px;}
+  .pay-panel.active{display:flex;}
+ 
+  .card-visual{background:
+      radial-gradient(circle at 88% 8%, rgba(20,166,166,0.35), transparent 42%),
+      radial-gradient(circle at 6% 96%, rgba(30,111,168,0.35), transparent 40%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    border-radius:14px; padding:20px 22px; color:#fff; font-family:var(--font-mono); margin-bottom:8px; position:relative; overflow:hidden; box-shadow:0 10px 24px rgba(15,36,56,0.28); min-height:150px; display:flex; flex-direction:column; justify-content:space-between;
+    transform-style:preserve-3d; transition:transform .25s cubic-bezier(.2,.8,.3,1), box-shadow .25s ease; will-change:transform;}
+  .card-visual:hover{box-shadow:0 20px 38px rgba(15,36,56,0.4);}
+  .card-visual::before{content:''; position:absolute; inset:0; opacity:.5; background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size:14px 14px;}
+  .card-top-row{display:flex; justify-content:space-between; align-items:flex-start; position:relative; z-index:1;}
+  .card-brand-lockup{display:flex; align-items:center; gap:7px; font-family:var(--font-head); font-weight:700; font-size:13px; letter-spacing:.02em;}
+  .card-brand-lockup svg{width:16px; height:16px;}
+  .card-net{font-size:11px; color:#9FB4C2; font-weight:600; letter-spacing:.03em; transition:color .2s;}
+  .card-chip-row{display:flex; align-items:center; gap:12px; position:relative; z-index:1;}
+  .card-chip{width:34px; height:25px; border-radius:5px; background:linear-gradient(135deg,#E8D48A,#C9A84C); position:relative; overflow:hidden;}
+  .card-chip::before,.card-chip::after{content:''; position:absolute; background:rgba(0,0,0,.22);}
+  .card-chip::before{top:50%; left:0; right:0; height:1.5px; transform:translateY(-50%);}
+  .card-chip::after{left:50%; top:0; bottom:0; width:1.5px; transform:translateX(-50%);}
+  .card-contactless{width:16px; height:16px; opacity:.8;}
+  .card-visual .cnum{font-size:17px; letter-spacing:2.5px; position:relative; z-index:1; font-weight:600;}
+  .card-visual .crow{display:flex; justify-content:space-between; font-size:10px; color:#B7C4CE; position:relative; z-index:1; letter-spacing:.03em; gap:10px;}
+  .card-visual .crow b{color:#fff; font-size:11px; display:block; margin-top:2px; font-weight:600;}
+ 
+  .field-icon-wrap{position:relative;}
+  .field-icon-wrap svg{position:absolute; left:14px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--muted); pointer-events:none;}
+  .field-icon-wrap input{padding-left:40px !important; width:100%;}
+  .row-2{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+ 
+  .upi-apps{display:flex; gap:10px; margin-top:2px; flex-wrap:wrap;}
+  .upi-app-chip{flex:1; min-width:80px; border:1.5px solid var(--border); border-radius:9px; padding:12px 8px; text-align:center; font-size:11.5px; font-weight:600; color:var(--muted); display:flex; flex-direction:column; align-items:center; gap:6px; transition:all .15s;}
+  .upi-app-chip:hover{border-color:var(--blue); color:var(--blue); background:var(--teal-soft);}
+  .upi-app-chip svg{width:20px; height:20px;}
+ 
+  .secure-note{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted); margin-top:14px; flex-wrap:wrap;}
+  .secure-note svg{width:14px; height:14px; color:var(--teal); flex-shrink:0;}
+  .accepted-cards{display:flex; gap:6px; margin-left:auto;}
+  .accepted-cards svg{width:26px; height:17px;}
+ 
+  .pay-btn{position:relative; overflow:hidden;}
+  .pay-btn .spinner{display:none; width:16px; height:16px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite;}
+  .pay-btn.loading .spinner{display:inline-block;}
+  .pay-btn.loading .pay-btn-label{opacity:.6;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media(max-width:880px){.checkout-grid{grid-template-columns:1fr; gap:36px; padding:32px 0;}}
+  @media(max-width:520px){
+    .billing-card-head, .order-box-head{padding:16px 18px;}
+    .billing-form{padding:18px; gap:14px;}
+    .order-box-body{padding:16px 18px 20px;}
+    .row-2{grid-template-columns:1fr 1fr;}
+  }
+ 
+  /* ---------- SUCCESS MODAL ---------- */
+  .modal-scrim{position:fixed; inset:0; background:rgba(10,24,38,0.55); z-index:400; display:none; align-items:center; justify-content:center; padding:20px;}
+  .modal-scrim.open{display:flex;}
+  .modal-card{background:var(--card); border-radius:18px; padding:40px 34px; max-width:380px; width:100%; text-align:center; box-shadow:var(--shadow-lg);}
+  .modal-check{width:66px; height:66px; border-radius:50%; background:#E4F5EC; color:#1E8E5A; display:flex; align-items:center; justify-content:center; margin:0 auto 18px;}
+  .modal-check svg{width:32px; height:32px;}
+  .modal-card h3{margin-bottom:8px;}
+  .modal-card p{color:var(--muted); font-size:14px; margin-bottom:22px;}
+ 
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy); color:#B7C4CE; padding-top:56px;}
+  .newsletter-row{display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:center; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,0.1);}
+  .newsletter-row h3{color:#fff; font-size:20px; margin-bottom:6px;}
+  .newsletter-row p{color:#9FB0BA; font-size:13.5px;}
+  .newsletter-form{display:flex; gap:10px;}
+  .newsletter-form input{flex:1; min-width:0; border:1.5px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.06); border-radius:8px; padding:13px 16px; color:#fff; font-size:14px;}
+  .newsletter-form input::placeholder{color:#7E92A0;}
+  .newsletter-form input:focus{outline:none; border-color:var(--teal);}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; padding:40px 0; border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-brand p{font-size:13.5px; color:#8CA0AB; margin-top:14px; max-width:280px;}
+  footer h4{font-size:12.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#8CA0AB; margin-bottom:16px; font-family:var(--font-mono);}
+  footer ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  footer ul a{font-size:14px;}
+  footer ul a:hover{color:#fff;}
+  .footer-bottom{display:flex; justify-content:space-between; padding:20px 0 90px; font-size:13px; color:#748893; flex-wrap:wrap; gap:10px;}
+  .social-row{display:flex; gap:12px; margin-top:18px;}
+  .social-row a{width:34px; height:34px; border:1px solid rgba(255,255,255,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  @media(max-width:880px){.footer-grid{grid-template-columns:1fr 1fr;} .newsletter-row{grid-template-columns:1fr;}}
+  @media(max-width:640px){.footer-bottom{padding-bottom:96px;} .footer-grid{grid-template-columns:1fr; gap:28px;} .newsletter-form{flex-direction:column;} .newsletter-form button{width:100%;}}
+ 
+  /* cart drawer + misc */
+  .cart-drawer{position:fixed; top:0; right:-400px; width:min(380px,92vw); height:100%; height:100dvh; background:var(--card); z-index:200; box-shadow:-10px 0 34px rgba(15,36,56,0.2); transition:right .3s ease; display:flex; flex-direction:column;}
+  .cart-drawer.open{right:0;}
+  .cart-head{display:flex; justify-content:space-between; align-items:center; padding:22px 24px; border-bottom:1px solid var(--border);}
+  .cart-items{flex-grow:1; overflow-y:auto; padding:16px 24px;}
+  .cart-item{display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid var(--border); font-size:13.5px; gap:10px;}
+  .cart-item-remove{background:none; border:none; color:var(--muted); font-size:12px; text-decoration:underline; padding:0; margin-top:6px;}
+  .cart-empty{color:var(--muted); font-size:13.5px; padding:30px 0; text-align:center;}
+  .cart-foot{padding:22px 24px; border-top:1px solid var(--border);}
+  .cart-total-row{display:flex; justify-content:space-between; font-size:16px; font-weight:700; margin-bottom:16px;}
+  .scrim{position:fixed; inset:0; background:rgba(15,36,56,0.4); z-index:190; opacity:0; pointer-events:none; transition:opacity .3s;}
+  .scrim.open{opacity:1; pointer-events:auto;}
+  .wa-float{position:fixed; bottom:24px; right:24px; z-index:150; width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(37,211,102,0.4); transition:transform .2s;}
+  .wa-float:hover{transform:scale(1.06);}
+  .toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--navy); color:#fff; padding:13px 22px; border-radius:8px; font-size:14px; font-weight:500; z-index:300; opacity:0; pointer-events:none; transition:all .25s ease; text-align:center; max-width:90vw;}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+ 
+  /* sticky mobile CTA bar */
+  .mobile-bar{display:none;}
+  @media(max-width:640px){
+    .mobile-bar{position:fixed; bottom:0; left:0; right:0; z-index:160; background:var(--card); border-top:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr 1fr; box-shadow:0 -6px 20px rgba(15,36,56,0.1); padding-bottom:env(safe-area-inset-bottom);}
+    .mobile-bar a{display:flex; flex-direction:column; align-items:center; gap:4px; padding:10px 0 12px; font-size:11px; font-weight:600; color:var(--navy);}
+    .mobile-bar a svg{width:19px; height:19px;}
+    .mobile-bar a.mid{color:var(--orange);}
+    .wa-float{bottom:78px; width:50px; height:50px;}
+    body{padding-bottom:0;}
+  }
+  @media(max-width:340px){
+    .mobile-bar a{font-size:10px;}
+  }
+ 
+  /* generic small-screen type scale safety net */
+  @media(max-width:400px){
+    .wrap{padding:0 18px;}
+    .section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+ 
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo" onclick="goPage('home');return false;">
+      <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <rect x="1" y="1" width="38" height="38" rx="10" fill="#1E6FA8"/>
+        <path d="M20 9v22M9 20h22" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/>
+        <circle cx="30" cy="10" r="5" fill="#14A6A6"/>
+        <path d="M30 7.5v5M27.5 10h5" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Revix<span>Med</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a data-page="home" class="active" onclick="goPage('home');return false;">Home</a>
+      <a data-page="services" onclick="goPage('services');return false;">Services</a>
+      <a data-page="xray" onclick="goPage('xray');return false;">X-Ray Parts</a>
+      <a data-page="dental" onclick="goPage('dental');return false;">Dental Solutions</a>
+      <a data-page="about" onclick="goPage('about');return false;">About Us</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <button class="cart-btn" id="cartToggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>Cart</span>
+        <span class="cart-badge" id="cartCount">0</span>
+      </button>
+      <a class="btn btn-outline btn-sm" onclick="goPage('contact');return false;">Contact</a>
+      <a class="btn btn-accent btn-sm" onclick="goPage('contact');return false;">EMERGENCY REPAIR</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+ 
+<!-- ================= HOME PAGE ================= -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <div class="hero-eyebrow"><span class="dot"></span>ON-CALL FOR CRITICAL FAULTS</div>
+        <h1>RevixMed: Precision Medical &amp; Dental Equipment Repair.</h1>
+        <p class="lede">Expert solutions, genuine OEM parts, minimal downtime — for hospitals, clinics and diagnostic centers that can't afford to wait.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" onclick="goPage('contact');return false;">Book a Service</a>
+          <a class="btn btn-outline" onclick="goPage('home');document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'});return false;">Browse Spare Parts</a>
+        </div>
+      </div>
+      <div class="hero-illustration photo reveal">
+        <svg viewBox="0 0 400 275" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+          <rect width="400" height="275" fill="#DCE9EE"/>
+          <rect x="0" y="0" width="400" height="275" fill="url(#benchGrid)"/>
+          <defs>
+            <pattern id="benchGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M24 0H0V24" fill="none" stroke="#C3D6DD" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect x="30" y="170" width="340" height="14" rx="4" fill="#9FB9C4"/>
+          <rect x="60" y="90" width="100" height="80" rx="6" fill="#0F2438"/>
+          <rect x="70" y="100" width="80" height="46" rx="3" fill="#14A6A6"/>
+          <path d="M75 130l8-10 6 6 10-16 8 12" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="140" cy="158" r="4" fill="#1E6FA8"/>
+          <circle cx="152" cy="158" r="4" fill="#EB5F26"/>
+          <rect x="190" y="60" width="150" height="110" rx="8" fill="#fff" stroke="#1B3A57" stroke-width="2"/>
+          <circle cx="230" cy="100" r="20" fill="none" stroke="#1E6FA8" stroke-width="4"/>
+          <path d="M230 90v20M220 100h20" stroke="#1E6FA8" stroke-width="3" stroke-linecap="round"/>
+          <rect x="260" y="82" width="60" height="36" rx="3" fill="#EEF3F6" stroke="#9FB9C4"/>
+          <path d="M266 108l10-14 8 8 12-16 12 12" stroke="#14A6A6" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="210" y="130" width="110" height="20" rx="4" fill="#F5F8FA" stroke="#C3D6DD"/>
+          <circle cx="222" cy="140" r="4" fill="#EB5F26"/>
+          <circle cx="238" cy="140" r="4" fill="#1E6FA8"/>
+          <circle cx="254" cy="140" r="4" fill="#14A6A6"/>
+        </svg>
+        <div class="hero-tag">Live at our service bench — Patient monitor calibration</div>
+        <div class="hero-crosshair hc1"><svg viewBox="0 0 34 34" fill="none" stroke="#fff" stroke-width="1.4"><circle cx="17" cy="17" r="9"/><path d="M17 2v6M17 26v6M2 17h6M26 17h6"/></svg></div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="stats-bar reveal">
+        <div class="stat"><b data-count="10">0</b><span>Years in Service</span></div>
+        <div class="stat"><b data-count="1200">0</b><span>Repairs Completed</span></div>
+        <div class="stat"><b data-count="2" data-suffix="hr">0</b><span>Avg. Response Time</span></div>
+        <div class="stat"><b data-count="500">0</b><span>OEM Parts Stocked</span></div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="section">
+    <div class="wrap">
+      <div class="head-center reveal">
+        <div class="eyebrow">CORE SERVICES</div>
+        <h2>Our Core Services</h2>
+      </div>
+      <div class="cards-3">
+        <div class="service-card reveal">
+          <span class="svc-code mono">SVC-01 · GENERAL</span>
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#1E6FA8" stroke-width="1.8"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M4 10.5h3l1.5-3 2.5 6 1.5-4 1 2h5"/></svg></div>
+          <h3>General Medical Equipment Repair</h3>
+          <p>Patient monitors, defibrillators, infusion pumps and diagnostic devices — inspected, calibrated, and restored to spec.</p>
+          <a class="card-link card-action" onclick="goPage('services');return false;">Learn More →</a>
+        </div>
+        <div class="service-card reveal">
+          <span class="svc-code mono">SVC-02 · DENTAL</span>
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#14A6A6" stroke-width="1.8"><path d="M7 15c0-6 2.5-10 5-10s5 4 5 10"/><rect x="4" y="15" width="16" height="4.5" rx="1.5"/><path d="M10 5l1-2.5M14 5l-1-2.5"/></svg></div>
+          <h3>Dental Unit &amp; Instrument Maintenance</h3>
+          <p>Chairs, high-speed handpieces, compressors and intraoral sensors kept running smoothly between patients.</p>
+          <a class="card-link card-action" onclick="goPage('dental');return false;">Learn More →</a>
+        </div>
+        <div class="service-card reveal">
+          <span class="svc-code mono">SVC-03 · IMAGING</span>
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#EB5F26" stroke-width="1.8"><rect x="3" y="4" width="9" height="9" rx="1.5"/><circle cx="17" cy="8.5" r="4"/><path d="M12 8.5h1M17 3.5v1M17 12.5v1M12.5 17h5"/></svg></div>
+          <h3>X-Ray Machine Parts &amp; Technical Support</h3>
+          <p>Tube replacement, generator repair and calibration for portable and fixed imaging systems, backed by genuine OEM parts.</p>
+          <a class="card-link card-action" onclick="goPage('xray');return false;">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="section section-alt" id="catalogSection">
+    <div class="wrap">
+      <div class="head-center reveal">
+        <div class="eyebrow">SPARE PARTS</div>
+        <h2>Catalog of Spare Parts</h2>
+      </div>
+      <div class="catalog-toolbar reveal">
+        <div class="cat-pills" id="catPills"></div>
+        <div class="search-box">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="partSearch" placeholder="Search part number e.g. XR-Cable 001" oninput="applyFilters()">
+        </div>
+      </div>
+      <div class="parts-grid reveal" id="partsGrid"></div>
+      <div class="trust-badges reveal">
+        <div class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>Genuine OEM Parts</div>
+        <div class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0110 0v3"/></svg>Secure Payments</div>
+        <div class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>Certified Technicians</div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="section" id="trustSection">
+    <div class="wrap trust-grid">
+      <div class="reveal">
+        <div class="eyebrow">TESTIMONIALS</div>
+        <h2>Trusted by Medical &amp; Dental Leaders Across the Region.</h2>
+        <div class="client-strip">
+          <div class="client-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L3 7v13h18V7l-9-5z"/><path d="M12 11v6M9 14h6"/></svg>City Hospital</div>
+          <div class="client-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-9-11a5 5 0 019-3 5 5 0 019 3c-2 5-9 11-9 11z"/></svg>Metro Dental Clinic</div>
+          <div class="client-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-9-11a5 5 0 019-3 5 5 0 019 3c-2 5-9 11-9 11z"/></svg>Apex Diagnostics</div>
+        </div>
+      </div>
+      <div class="carousel reveal">
+        <div class="testimonial-card active">
+          <div class="testimonial-who"><div class="avatar-init">RS</div><div><b>Dr. R. Sharma</b><span>Chief Radiologist, City Hospital</span></div></div>
+          <p class="testimonial-quote">RevixMed's rapid response and technical expertise saved us significant downtime. Their X-ray repair service is dependable and thorough.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-who"><div class="avatar-init">MK</div><div><b>Dr. M. Kapoor</b><span>Director, Metro Dental Clinic</span></div></div>
+          <p class="testimonial-quote">Our handpieces and chairs are serviced on schedule every time. The AMC plan has cut our unplanned downtime to almost zero.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-who"><div class="avatar-init">AV</div><div><b>Dr. A. Verma</b><span>Lab Head, Apex Diagnostics</span></div></div>
+          <p class="testimonial-quote">Genuine parts, certified technicians, and honest timelines — exactly what a diagnostics lab needs from a repair partner.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ================= SERVICES PAGE ================= -->
+<div class="page" id="page-services">
+  <section class="hero section-alt">
+    <div class="wrap">
+      <div class="head-center" style="max-width:720px;">
+        <div class="eyebrow">SERVICES</div>
+        <h1 style="font-size:clamp(26px,4vw,40px);">Complete Equipment Care, Under One Roof.</h1>
+        <p class="lede" style="margin:14px auto 0; text-align:center;">From bedside monitors to imaging systems, our certified technicians diagnose, repair, and calibrate to manufacturer spec.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="cards-3">
+        <div class="service-card reveal">
+          <span class="svc-code mono">SVC-01 · GENERAL</span>
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#1E6FA8" stroke-width="1.8"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M4 10.5h3l1.5-3 2.5 6 1.5-4 1 2h5"/></svg></div>
+          <h3>General Medical Equipment Repair</h3>
+          <p>Patient monitors, defibrillators, infusion pumps, ventilators and diagnostic devices — inspected, calibrated, and restored to manufacturer spec.</p>
+          <a class="btn btn-outline btn-sm card-action" onclick="goPage('contact');return false;">Request Service</a>
+        </div>
+        <div class="service-card reveal">
+          <span class="svc-code mono">SVC-02 · DENTAL</span>
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#14A6A6" stroke-width="1.8"><path d="M7 15c0-6 2.5-10 5-10s5 4 5 10"/><rect x="4" y="15" width="16" height="4.5" rx="1.5"/></svg></div>
+          <h3>Dental Unit &amp; Instrument Maintenance</h3>
+          <p>Dental chairs, high-speed handpieces, compressors and intraoral sensors — serviced to keep your chairside schedule on track.</p>
+          <a class="btn btn-outline btn-sm card-action" onclick="goPage('dental');return false;">View Dental Solutions</a>
+        </div>
+        <div class="service-card reveal">
+          <span class="svc-code mono">SVC-03 · IMAGING</span>
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#EB5F26" stroke-width="1.8"><rect x="3" y="4" width="9" height="9" rx="1.5"/><circle cx="17" cy="8.5" r="4"/></svg></div>
+          <h3>X-Ray Machine Parts &amp; Technical Support</h3>
+          <p>Tube replacement, high-voltage generator repair, and full system calibration for portable and fixed imaging units.</p>
+          <a class="btn btn-outline btn-sm card-action" onclick="goPage('xray');return false;">View X-Ray Parts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- AMC Calculator -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="head-center reveal">
+        <div class="eyebrow">ANNUAL MAINTENANCE</div>
+        <h2>Estimate Your AMC Plan</h2>
+        <p style="color:var(--muted); font-size:14.5px; margin-top:10px;">Fixed-rate preventive maintenance so faults get caught before they become downtime.</p>
+      </div>
+      <div class="amc-box reveal">
+        <div class="amc-form">
+          <div class="field">
+            <label>Facility Type</label>
+            <select id="amcTier" onchange="calcAMC()">
+              <option value="1350">Clinic — Basic (quarterly visits)</option>
+              <option value="2600">Hospital Wing — Standard (bi-monthly + priority line)</option>
+              <option value="4200">Diagnostic Center — Premium (monthly + 24hr SLA)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Equipment Units Covered</label>
+            <div class="stepper-row">
+              <div class="stepper">
+                <button type="button" onclick="stepAMC(-1)">−</button>
+                <span id="amcUnits">5</span>
+                <button type="button" onclick="stepAMC(1)">+</button>
+              </div>
+              <span style="font-size:13px; color:var(--muted);">devices under contract</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Include X-Ray Systems</label>
+            <select id="amcXray" onchange="calcAMC()">
+              <option value="0">No X-ray units</option>
+              <option value="900">Yes — add X-ray calibration</option>
+            </select>
+          </div>
+        </div>
+        <div class="amc-result">
+          <span class="amc-label mono">ESTIMATED ANNUAL COST</span>
+          <div class="amc-price">₹<span id="amcTotal">0</span></div>
+          <p class="amc-sub">Indicative pricing — final quote confirmed after a facility walkthrough.</p>
+          <ul>
+            <li>Scheduled preventive maintenance</li>
+            <li>Priority booking over walk-in requests</li>
+            <li>Discounted spare parts on covered devices</li>
+            <li>Digital calibration certificates</li>
+          </ul>
+          <a class="btn btn-accent" style="margin-top:22px;" onclick="goPage('contact');return false;">Request This Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ================= X-RAY PARTS PAGE ================= -->
+<div class="page" id="page-xray">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <h1>RevixMed X-Ray Support: Keeping Your Imaging Systems Operational.</h1>
+        <p class="lede">Fast response, expert diagnosis, and genuine OEM parts.</p>
+        <a class="btn btn-primary" onclick="goPage('contact');return false;">Request Service</a>
+      </div>
+      <div class="hero-illustration reveal" style="background:var(--bg-alt);">
+        <svg viewBox="0 0 300 220" fill="none" style="width:88%;height:88%;">
+          <rect x="40" y="30" width="30" height="160" rx="4" fill="var(--card)" stroke="#1E6FA8" stroke-width="2"/>
+          <circle cx="150" cy="110" r="55" fill="none" stroke="#14A6A6" stroke-width="6"/>
+          <rect x="130" y="150" width="140" height="18" rx="4" fill="var(--card)" stroke="#1E6FA8" stroke-width="2"/>
+          <path d="M150 55v-15M150 165v15" stroke="#EB5F26" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="150" cy="110" r="10" fill="#EB5F26" opacity=".2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="head-center"><h2>Our X-Ray Services</h2></div>
+      <div class="cards-3">
+        <div class="service-card reveal" style="text-align:center; align-items:center;">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#1E6FA8" stroke-width="1.8"><rect x="4" y="3" width="12" height="18" rx="2"/><path d="M8 8h4M8 12h4"/></svg></div>
+          <h3>X-Ray Tube Replacement</h3>
+          <a class="btn btn-primary btn-sm card-action" onclick="goPage('contact');return false;">Request Service</a>
+        </div>
+        <div class="service-card reveal" style="text-align:center; align-items:center;">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#14A6A6" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M13 8l-4 5h3l-1 4 5-6h-3l1-3z" fill="#14A6A6" stroke="none"/></svg></div>
+          <h3>High-Voltage Generator Repair</h3>
+          <a class="btn btn-primary btn-sm card-action" onclick="goPage('contact');return false;">Request Service</a>
+        </div>
+        <div class="service-card reveal" style="text-align:center; align-items:center;">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#EB5F26" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>System Calibration &amp; Safety Checks</h3>
+          <a class="btn btn-primary btn-sm card-action" onclick="goPage('contact');return false;">Request Service</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="head-center"><h2>X-Ray Spare Parts</h2></div>
+      <div class="parts-grid" id="partsGridXray"></div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ================= DENTAL SOLUTIONS PAGE ================= -->
+<div class="page" id="page-dental">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <h1>RevixMed Dental Solutions: Precision Care for Your Practice.</h1>
+        <p class="lede">Expert repair and maintenance for chairs, handpieces, and imaging systems.</p>
+        <a class="btn btn-primary" onclick="goPage('contact');return false;">Get a Quote</a>
+      </div>
+      <div class="hero-illustration reveal" style="background:var(--bg-alt);">
+        <svg viewBox="0 0 300 220" fill="none" style="width:88%;height:88%;">
+          <path d="M90 170c0-50 15-90 60-90s60 40 60 90" stroke="#14A6A6" stroke-width="5" fill="none"/>
+          <rect x="60" y="168" width="180" height="30" rx="6" fill="var(--card)" stroke="#1E6FA8" stroke-width="2"/>
+          <circle cx="150" cy="70" r="16" fill="var(--card)" stroke="#EB5F26" stroke-width="2.5"/>
+          <path d="M150 54v-14M144 40h12" stroke="#EB5F26" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="head-center"><h2>Our Dental Services</h2></div>
+      <div class="cards-3">
+        <div class="service-card reveal" style="text-align:center; align-items:center;">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#1E6FA8" stroke-width="1.8"><path d="M7 15c0-6 2.5-10 5-10s5 4 5 10"/><rect x="4" y="15" width="16" height="4.5" rx="1.5"/></svg></div>
+          <h3>Dental Unit &amp; Chair Repair</h3>
+          <a class="btn btn-primary btn-sm card-action" onclick="goPage('contact');return false;">Get Quote</a>
+        </div>
+        <div class="service-card reveal" style="text-align:center; align-items:center;">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#14A6A6" stroke-width="1.8"><path d="M4 20l7-7M14 6l4-4 4 4-4 4M9 11l7 7M9 11L4 6l4-4 5 5"/></svg></div>
+          <h3>High-Speed Handpiece Service</h3>
+          <a class="btn btn-primary btn-sm card-action" onclick="goPage('contact');return false;">Get Quote</a>
+        </div>
+        <div class="service-card reveal" style="text-align:center; align-items:center;">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#EB5F26" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><circle cx="12" cy="10.5" r="3.5"/></svg></div>
+          <h3>Digital X-Ray &amp; Sensor Calibration</h3>
+          <a class="btn btn-primary btn-sm card-action" onclick="goPage('contact');return false;">Get Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="head-center"><h2>Dental Spare Parts</h2></div>
+      <div class="parts-grid" id="partsGridDental"></div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ================= ABOUT US PAGE ================= -->
+<div class="page" id="page-about">
+  <section class="section">
+    <div class="wrap trust-grid">
+      <div class="reveal">
+        <div class="eyebrow">ABOUT REVIXMED</div>
+        <h2>Ten years keeping critical equipment running.</h2>
+        <p style="color:var(--muted); margin-top:16px; font-size:15px; max-width:460px;">RevixMed was founded by biomedical engineers who saw hospitals and clinics losing revenue to slow, unreliable equipment repair. Today our certified technicians service medical and dental equipment across the region with genuine OEM parts and same-day response for critical faults.</p>
+        <div class="client-strip">
+          <div class="client-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L3 7v13h18V7l-9-5z"/></svg>City Hospital</div>
+          <div class="client-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-9-11a5 5 0 019-3 5 5 0 019 3c-2 5-9 11-9 11z"/></svg>Metro Dental Clinic</div>
+          <div class="client-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-9-11a5 5 0 019-3 5 5 0 019 3c-2 5-9 11-9 11z"/></svg>Apex Diagnostics</div>
+        </div>
+      </div>
+      <div class="testimonial-card active reveal">
+        <div class="testimonial-who">
+          <div class="avatar-init">RS</div>
+          <div><b>Dr. R. Sharma</b><span>Chief Radiologist, City Hospital</span></div>
+        </div>
+        <p class="testimonial-quote">RevixMed's rapid response and technical expertise saved us significant downtime. Their X-ray repair service is dependable and thorough.</p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="photo-gallery reveal">
+        <div class="photo-card">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+            <rect width="400" height="300" fill="#0F2438"/>
+            <rect width="400" height="300" fill="url(#cleanGrid)" opacity=".5"/>
+            <defs><pattern id="cleanGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#1B3A57" stroke-width="1"/></pattern></defs>
+            <rect x="60" y="60" width="280" height="150" rx="8" fill="#14324A" stroke="#2A5170" stroke-width="2"/>
+            <circle cx="140" cy="130" r="34" fill="none" stroke="#14A6A6" stroke-width="5"/>
+            <path d="M140 106v48M116 130h48" stroke="#14A6A6" stroke-width="3" stroke-linecap="round"/>
+            <rect x="210" y="105" width="90" height="50" rx="4" fill="#0F2438" stroke="#2A5170"/>
+            <path d="M220 140l14-20 12 12 16-22 18 16" stroke="#EB5F26" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="60" y="225" width="280" height="16" rx="4" fill="#2A5170"/>
+          </svg>
+          <div class="photo-caption"><b>Cleanroom-grade servicing</b><span>Sterile protocol maintained on every equipment visit</span></div>
+        </div>
+        <div class="photo-card">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+            <rect width="400" height="300" fill="#DCE9EE"/>
+            <rect width="400" height="300" fill="url(#benchGrid2)"/>
+            <defs><pattern id="benchGrid2" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#C3D6DD" stroke-width="1"/></pattern></defs>
+            <rect x="40" y="205" width="320" height="16" rx="4" fill="#9FB9C4"/>
+            <rect x="70" y="95" width="120" height="110" rx="6" fill="#0F2438"/>
+            <rect x="82" y="107" width="96" height="58" rx="3" fill="#14A6A6"/>
+            <path d="M90 140l10-14 8 8 12-18 10 14" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="160" cy="188" r="5" fill="#1E6FA8"/>
+            <circle cx="176" cy="188" r="5" fill="#EB5F26"/>
+            <rect x="220" y="70" width="150" height="120" rx="8" fill="#fff" stroke="#1B3A57" stroke-width="2"/>
+            <circle cx="265" cy="115" r="22" fill="none" stroke="#1E6FA8" stroke-width="4"/>
+            <path d="M265 103v24M253 115h24" stroke="#1E6FA8" stroke-width="3" stroke-linecap="round"/>
+            <rect x="300" y="95" width="55" height="36" rx="3" fill="#EEF3F6" stroke="#9FB9C4"/>
+          </svg>
+          <div class="photo-caption"><b>Certified bench technicians</b><span>Full diagnostic tear-down and calibration</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="head-center"><h2>Frequently Asked Questions</h2></div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">What warranty comes with a repair?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Every repair carries a 90-day service warranty on the fault addressed, and OEM parts carry the manufacturer's own warranty term.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How fast can parts be delivered?<span class="plus">+</span></button>
+          <div class="faq-a"><p>In-stock parts ship within 24–48 hours. Parts sourced directly from the manufacturer typically take 5–7 business days.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you offer annual maintenance contracts?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes — hospitals and clinics can set up scheduled calibration and preventive maintenance visits at a fixed annual rate. Use the AMC calculator on our Services page for an estimate.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which areas do you service on-site?<span class="plus">+</span></button>
+          <div class="faq-a"><p>On-site visits currently cover the metro region and surrounding districts. Outside that radius, equipment can be shipped to our service center.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ================= CONTACT / BOOKING PAGE ================= -->
+<div class="page" id="page-contact">
+  <section class="section">
+    <div class="wrap">
+      <div class="head-center">
+        <div class="eyebrow">SERVICE REQUEST</div>
+        <h2>Tell us what's broken before we arrive.</h2>
+      </div>
+      <div class="booking-wrap">
+        <div class="booking-side">
+          <h3>How booking works</h3>
+          <p>A short description and a photo let our technician bring the right tools and parts on the first visit.</p>
+          <div class="booking-step"><div class="n">1</div><div><b>Submit the form</b><span>Equipment type, issue, and a photo if you have one.</span></div></div>
+          <div class="booking-step"><div class="n">2</div><div><b>We confirm by phone</b><span>Usually within 2 hours during business hours.</span></div></div>
+          <div class="booking-step"><div class="n">3</div><div><b>Technician visit</b><span>Diagnosis, repair, or part replacement on-site.</span></div></div>
+          <div style="margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.12);">
+            <span style="color:var(--orange); font-weight:700; font-size:13px;">EQUIPMENT DOWN RIGHT NOW?</span>
+            <p style="color:#fff; font-size:14px; margin:8px 0 14px;">Skip the form — call our emergency line directly.</p>
+            <a href="tel:+911234567890" class="btn btn-accent" style="width:100%;">Call Emergency Line</a>
+          </div>
+        </div>
+        <form class="booking-form" onsubmit="event.preventDefault(); showToast('Service request received — we will call you shortly.'); this.reset();">
+          <div class="field"><label>Full Name</label><input type="text" required placeholder="Dr. Ananya Verma"></div>
+          <div class="field"><label>Phone</label><input type="tel" required placeholder="+91 98XXX XXXXX"></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="you@hospital.com"></div>
+          <div class="field"><label>Equipment Type</label>
+            <select><option>Patient Monitor</option><option>Endoscope</option><option>Dental Chair / Handpiece</option><option>X-Ray Machine</option><option>Other</option></select>
+          </div>
+          <div class="field full"><label>Describe the Issue</label><textarea placeholder="e.g. Endoscope light source flickers after 10 minutes of use."></textarea></div>
+          <div class="field full">
+            <label>Photo of the Issue (optional)</label>
+            <label class="upload-box" for="fPhoto">Click to attach a photo — JPG or PNG</label>
+            <input id="fPhoto" type="file" accept="image/*" style="display:none;">
+          </div>
+          <div class="field full"><button type="submit" class="btn btn-primary" style="width:100%;">Submit Service Request</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ================= CHECKOUT PAGE ================= -->
+<div class="page" id="page-checkout">
+  <div class="wrap checkout-header">
+    <a href="#" class="logo" onclick="goPage('home');return false;">
+      <svg width="30" height="30" viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" rx="10" fill="#1E6FA8"/><path d="M20 9v22M9 20h22" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/></svg>
+      Revix<span>Med</span>
+    </a>
+    <b class="mono" style="font-size:13px; display:flex; align-items:center; gap:6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14A6A6" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0110 0v3"/></svg>Secure Checkout</b>
+  </div>
+  <div class="wrap checkout-steps">
+    <div class="cstep done"><span class="csn">✓</span>Cart</div>
+    <div class="cline"></div>
+    <div class="cstep current"><span class="csn">2</span>Details &amp; Payment</div>
+    <div class="cline"></div>
+    <div class="cstep"><span class="csn">3</span>Confirmation</div>
+  </div>
+  <div class="wrap checkout-grid">
+    <div>
+      <h2>Billing Details</h2>
+      <div class="billing-card">
+        <div class="billing-card-head">
+          <span>Contact &amp; Delivery</span>
+          <b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0110 0v3"/></svg>Kept private</b>
+        </div>
+        <div class="billing-form">
+          <div class="field bf-full">
+            <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>Full Name</label>
+            <input type="text" placeholder="Dr. Ananya Verma" id="billName">
+          </div>
+          <div class="field bf-full">
+            <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg>Company / Facility <span style="text-transform:none; font-weight:400;">(optional)</span></label>
+            <input type="text" placeholder="City Hospital">
+          </div>
+          <div class="field bf-full">
+            <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Address</label>
+            <input type="text" placeholder="Street, area">
+          </div>
+          <div class="field">
+            <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>City</label>
+            <input type="text" placeholder="Indore">
+          </div>
+          <div class="field">
+            <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.4 2.1L8 10.3a16 16 0 006 6l1.5-1.4a2 2 0 012.1-.4c1 .4 2 .6 3 .7a2 2 0 011.7 2z"/></svg>Phone</label>
+            <input type="tel" placeholder="+91 98XXX XXXXX">
+          </div>
+          <div class="field bf-full">
+            <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>Email</label>
+            <input type="email" placeholder="you@hospital.com">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Your Order</h2>
+      <div class="order-box">
+        <div class="order-box-head">
+          <span>Order Summary</span>
+          <b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Items reserved</b>
+        </div>
+        <div class="order-box-body">
+        <div id="checkoutItems"></div>
+        <div class="order-row"><span>Subtotal</span><span id="coSubtotal">$0</span></div>
+        <div class="order-row"><span>Shipping</span><span>$10</span></div>
+        <div class="order-row total"><span>Total</span><span id="coTotal">$0</span></div>
+ 
+        <div class="pay-tabs">
+          <button type="button" class="pay-tab active" id="tabCard" onclick="switchPay('card')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Card
+          </button>
+          <button type="button" class="pay-tab" id="tabUpi" onclick="switchPay('upi')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>UPI
+          </button>
+        </div>
+ 
+        <div class="pay-panel active" id="panelCard">
+          <div class="card-visual">
+            <div class="card-top-row">
+              <div class="card-brand-lockup"><svg viewBox="0 0 24 24" fill="none" stroke="#14A6A6" stroke-width="2.2"><path d="M20 9v22M9 20h22" transform="scale(0.5) translate(2,2)"/><circle cx="12" cy="12" r="10" stroke="#14A6A6"/></svg>REVIXMED PAY</div>
+              <span class="card-net" id="cardNetLabel">SECURE</span>
+            </div>
+            <div class="card-chip-row">
+              <div class="card-chip"></div>
+              <svg class="card-contactless" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M8 12a4 4 0 010-8M5 15a8 8 0 010-16" opacity=".9"/></svg>
+            </div>
+            <div>
+              <div class="cnum" id="cardPreviewNum">•••• •••• •••• ••••</div>
+              <div class="crow" style="margin-top:12px;">
+                <span>CARD HOLDER<b id="cardPreviewName">YOUR NAME</b></span>
+                <span>EXPIRES<b id="cardPreviewExp">MM/YY</b></span>
+              </div>
+            </div>
+          </div>
+          <div class="field-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            <input type="text" placeholder="Card number" id="cardNum" maxlength="19" inputmode="numeric">
+          </div>
+          <div class="row-2">
+            <div class="field-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+              <input type="text" placeholder="MM/YY" id="cardExp" maxlength="5" inputmode="numeric">
+            </div>
+            <div class="field-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+              <input type="text" placeholder="CVV" id="cardCvv" maxlength="3" inputmode="numeric">
+            </div>
+          </div>
+          <input type="text" placeholder="Name on card" id="cardName">
+        </div>
+        <div class="pay-panel" id="panelUpi">
+          <div class="field-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+            <input type="text" placeholder="yourname@upi">
+          </div>
+          <div class="upi-apps">
+            <div class="upi-app-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3.5 3.5"/></svg>GPay</div>
+            <div class="upi-app-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>PhonePe</div>
+            <div class="upi-app-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>Paytm</div>
+          </div>
+          <span style="font-size:12px; color:var(--muted);">You'll receive a payment approval request on your UPI app.</span>
+        </div>
+ 
+        <div class="secure-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0110 0v3"/></svg>
+          256-bit encrypted · Razorpay-secured
+          <span class="accepted-cards">
+            <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="4" fill="#EEF3F6"/><text x="19" y="16" text-anchor="middle" font-size="8" font-weight="700" fill="#1E6FA8" font-family="Arial">VISA</text></svg>
+            <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="4" fill="#EEF3F6"/><circle cx="16" cy="12" r="6" fill="#EB5F26" opacity=".8"/><circle cx="23" cy="12" r="6" fill="#F5A623" opacity=".8"/></svg>
+            <svg viewBox="0 0 38 24"><rect width="38" height="24" rx="4" fill="#EEF3F6"/><text x="19" y="16" text-anchor="middle" font-size="7" font-weight="700" fill="#14A6A6" font-family="Arial">RuPay</text></svg>
+          </span>
+        </div>
+        <button class="btn btn-primary pay-btn" style="width:100%; margin-top:16px;" onclick="placeOrder()" id="placeOrderBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0110 0v3"/></svg>
+          <span class="pay-btn-label" id="payBtnLabel">Place Secure Order</span>
+          <span class="spinner"></span>
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="newsletter-row">
+      <div>
+        <h3>Get equipment-care tips &amp; part alerts.</h3>
+        <p>One short email a month — no spam, unsubscribe anytime.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed — welcome aboard!'); this.reset();">
+        <input type="email" required placeholder="you@hospital.com">
+        <button type="submit" class="btn btn-accent">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="color:#fff;" onclick="goPage('home');return false;">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" rx="10" fill="#1E6FA8"/><path d="M20 9v22M9 20h22" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/></svg>
+          Revix<span style="color:#4FB8C4;">Med</span>
+        </a>
+        <p>Precision repair for medical and dental equipment — genuine parts, certified technicians, minimal downtime.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2c2.7 0 3 0 4.1.1 1.1 0 1.8.2 2.3.4a4.6 4.6 0 012.6 2.6c.2.5.4 1.2.4 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1.1-.2 1.8-.4 2.3a4.6 4.6 0 01-2.6 2.6c-.5.2-1.2.4-2.3.4-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1.1 0-1.8-.2-2.3-.4a4.6 4.6 0 01-2.6-2.6c-.2-.5-.4-1.2-.4-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1.1.2-1.8.4-2.3a4.6 4.6 0 012.6-2.6c.5-.2 1.2-.4 2.3-.4C8.5 2.6 8.8 2 12 2z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M22 12s0-3.2-.4-4.7a3 3 0 00-2.1-2.1C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.5.5a3 3 0 00-2.1 2.1C2 8.8 2 12 2 12s0 3.2.4 4.7a3 3 0 002.1 2.1C6.1 19.3 12 19.3 12 19.3s5.9 0 7.5-.5a3 3 0 002.1-2.1c.4-1.5.4-4.7.4-4.7zM10 15V9l5 3-5 3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="goPage('services');return false;">Services</a></li>
+          <li><a onclick="goPage('xray');return false;">X-Ray Parts</a></li>
+          <li><a onclick="goPage('dental');return false;">Dental Solutions</a></li>
+          <li><a onclick="goPage('about');return false;">About Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a onclick="goPage('services');return false;">Medical Equipment Repair</a></li>
+          <li><a onclick="goPage('dental');return false;">Dental Maintenance</a></li>
+          <li><a onclick="goPage('xray');return false;">X-Ray Support</a></li>
+          <li><a onclick="goPage('contact');return false;">Book a Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>service@revixmed.example</li>
+          <li>+91 12345 67890</li>
+          <li>Mon–Sat, 9am – 8pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 RevixMed. All rights reserved.</span>
+      <span>Made for facilities that can't afford downtime.</span>
+    </div>
+  </div>
+</footer>
+ 
+<a href="https://wa.me/911234567890" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.2c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.6.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.2.1.4.2.4.4.1.3.1 1-.1 1.5z"/></svg>
+</a>
+ 
+<nav class="mobile-bar">
+  <a href="tel:+911234567890"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.4 2.1L8 10.3a16 16 0 006 6l1.5-1.4a2 2 0 012.1-.4c1 .4 2 .6 3 .7a2 2 0 011.7 2z"/></svg>Call</a>
+  <a href="#" class="mid" onclick="goPage('contact');return false;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>Book</a>
+  <a href="#" onclick="document.getElementById('cartToggle').click();return false;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Cart</a>
+</nav>
+ 
+<div class="scrim" id="scrim"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><h3>Your Cart</h3><button id="cartClose" style="background:none;border:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Your cart is empty.</div></div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-primary" style="width:100%;" onclick="goToCheckout()">Proceed to Checkout</button>
+  </div>
+</aside>
+ 
+<div class="modal-scrim" id="successModal">
+  <div class="modal-card">
+    <div class="modal-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+    <h3>Order Placed!</h3>
+    <p>This is a demo checkout — no real payment was processed. A confirmation would normally be emailed to you.</p>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal()">Back to Home</button>
+  </div>
+</div>
+ 
+<div class="toast" id="toast"></div>
+ 
+<script>
+  // ---------- Page router ----------
+  function goPage(name){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-'+name).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active', a.dataset.page===name));
+    document.getElementById('navLinks').classList.remove('open');
+    window.scrollTo({top:0, behavior:'instant'});
+    closeCart();
+    initReveal();
+  }
+  document.getElementById('navToggle').addEventListener('click', ()=> document.getElementById('navLinks').classList.toggle('open'));
+ 
+  // ---------- Dark mode ----------
+  document.getElementById('themeToggle').addEventListener('click', ()=>{
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  });
+ 
+  // ---------- FAQ ----------
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+      if(!isOpen){ item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+    });
+  });
+ 
+  // ---------- Reveal on scroll ----------
+  let revealObserver;
+  function initReveal(){
+    if(revealObserver) revealObserver.disconnect();
+    revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); revealObserver.unobserve(e.target); } });
+    }, {threshold:0.12});
+    document.querySelectorAll('.page.active .reveal').forEach(el=> revealObserver.observe(el));
+  }
+ 
+  // ---------- Stat count-up ----------
+  const statObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const target = parseInt(el.dataset.count,10);
+        const suffix = el.dataset.suffix || '';
+        let cur = 0;
+        const step = Math.max(1, Math.round(target/40));
+        const tick = ()=>{
+          cur += step;
+          if(cur >= target){ el.textContent = target + (suffix?('<'+suffix):'+'); }
+          else{ el.textContent = cur; requestAnimationFrame(tick); }
+        };
+        tick();
+        statObserver.unobserve(el);
+      }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('[data-count]').forEach(el=> statObserver.observe(el));
+ 
+  // ---------- Parts data ----------
+  const parts = [
+    {sku:'XR-Cable 001', name:'X-Ray HV Cable', price:150, cat:'xray', icon:'cable'},
+    {sku:'DT-Turbine 050', name:'Dental Turbine Head', price:280, cat:'dental', icon:'turbine'},
+    {sku:'XR-Lamp 102', name:'Collimator Lamp', price:45, cat:'xray', icon:'lamp'},
+    {sku:'UM-Board 300', name:'Universal Control Board', price:550, cat:'board', icon:'board'},
+    {sku:'DT-Chair Valve 12', name:'Chair Hydraulic Valve', price:95, cat:'dental', icon:'valve'},
+    {sku:'XR-Gen Control 07', name:'HV Generator Controller', price:620, cat:'xray', icon:'ctrl'},
+    {sku:'PM-SpO2 22', name:'SpO2 Sensor Clip', price:65, cat:'monitor', icon:'sensor'},
+    {sku:'DEF-Paddle 08', name:'Defibrillator Paddle Set', price:340, cat:'monitor', icon:'paddle'},
+  ];
+  const categories = [
+    {id:'all', label:'All Parts'},
+    {id:'xray', label:'X-Ray'},
+    {id:'dental', label:'Dental'},
+    {id:'monitor', label:'Monitors'},
+    {id:'board', label:'Boards'},
+  ];
+  const icons = {
+    // X-Ray HV Cable — coiled high-voltage cable with metal connector plugs on each end
+    cable:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#1E6FA8" opacity=".07"/><path d="M34 92c-14 0-14-20 0-20s16-20 0-20 2-20 16-20" fill="none" stroke="#20262c" stroke-width="9" stroke-linecap="round"/><path d="M34 92c-14 0-14-20 0-20s16-20 0-20 2-20 16-20" fill="none" stroke="#565f68" stroke-width="2.4" stroke-linecap="round" opacity=".55"/><rect x="21" y="83" width="23" height="18" rx="5" fill="#cfd4d9"/><rect x="21" y="83" width="23" height="6" rx="3" fill="#8d949b"/><circle cx="33" cy="93" r="2.4" fill="#EB5F26"/><rect x="37" y="17" width="21" height="17" rx="5" fill="#cfd4d9"/><rect x="37" y="17" width="21" height="6" rx="3" fill="#8d949b"/><circle cx="47" cy="26" r="2.4" fill="#EB5F26"/>',
+    // Dental Turbine Head — handpiece head with grip ring and bur
+    turbine:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#14A6A6" opacity=".07"/><rect x="54" y="14" width="12" height="32" rx="5" fill="#c7ccd1"/><rect x="54" y="14" width="12" height="9" rx="4" fill="#9aa0a6"/><circle cx="60" cy="72" r="31" fill="#e7eaec" stroke="#b7bdc3" stroke-width="2"/><circle cx="60" cy="78" r="19" fill="#14A6A6"/><circle cx="51" cy="68" r="6.5" fill="#ffffff" opacity=".4"/><rect x="53" y="44" width="14" height="12" rx="3" fill="#9aa0a6"/><circle cx="60" cy="103" r="4" fill="#0f2438" opacity=".2"/>',
+    // Collimator Lamp — light housing beaming from a lens
+    lamp:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#EB5F26" opacity=".07"/><rect x="28" y="18" width="64" height="32" rx="6" fill="#dfe3e6" stroke="#b7bdc3" stroke-width="2"/><rect x="35" y="24" width="10" height="6" rx="2" fill="#9aa0a6"/><rect x="75" y="24" width="10" height="6" rx="2" fill="#9aa0a6"/><circle cx="60" cy="80" r="25" fill="#33383e"/><circle cx="60" cy="80" r="19" fill="#EB5F26"/><circle cx="60" cy="80" r="9" fill="#FDBF8F"/><path d="M60 44v10M60 106v10M24 80h10M86 80h10" stroke="#EB5F26" stroke-width="3" stroke-linecap="round" opacity=".5"/>',
+    // Universal Control Board — green PCB with chips, capacitors and edge connector
+    board:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#1E6FA8" opacity=".07"/><rect x="18" y="16" width="84" height="88" rx="6" fill="#1C6E4A" stroke="#0f4d33" stroke-width="2"/><rect x="28" y="26" width="27" height="18" rx="2" fill="#232323"/><rect x="63" y="26" width="27" height="18" rx="2" fill="#232323"/><circle cx="32" cy="60" r="5.5" fill="#c7ccd1" stroke="#8d949b"/><circle cx="49" cy="60" r="5.5" fill="#c7ccd1" stroke="#8d949b"/><rect x="65" y="53" width="25" height="15" rx="2" fill="#d9a441"/><path d="M26 78h68M26 85h68M26 92h44" stroke="#0f4d33" stroke-width="1.6" opacity=".7"/><rect x="18" y="98" width="11" height="10" fill="#d9a441"/><rect x="31" y="98" width="11" height="10" fill="#d9a441"/><rect x="44" y="98" width="11" height="10" fill="#d9a441"/>',
+    // Chair Hydraulic Valve — valve body with pressure gauge and lever
+    valve:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#14A6A6" opacity=".07"/><rect x="24" y="56" width="72" height="24" rx="6" fill="#c7ccd1"/><rect x="24" y="56" width="72" height="8" rx="4" fill="#9aa0a6"/><rect x="14" y="61" width="14" height="14" rx="3" fill="#9aa0a6"/><rect x="92" y="61" width="14" height="14" rx="3" fill="#9aa0a6"/><circle cx="60" cy="68" r="16" fill="#e7eaec" stroke="#9aa0a6" stroke-width="2"/><path d="M60 68l7-9" stroke="#0f2438" stroke-width="2" stroke-linecap="round"/><rect x="55" y="32" width="10" height="26" rx="3" fill="#8d949b"/><rect x="40" y="20" width="40" height="14" rx="7" fill="#EB5F26"/><rect x="40" y="20" width="40" height="5" rx="2.5" fill="#ff8a52" opacity=".7"/>',
+    // HV Generator Controller — control panel with digital display, dials and status light
+    ctrl:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#EB5F26" opacity=".07"/><rect x="18" y="16" width="84" height="88" rx="8" fill="#22262c"/><rect x="28" y="27" width="64" height="27" rx="4" fill="#173525"/><rect x="33" y="33" width="9" height="15" fill="#38e07a" opacity=".9"/><rect x="46" y="37" width="9" height="11" fill="#38e07a" opacity=".65"/><rect x="59" y="30" width="9" height="18" fill="#38e07a" opacity=".8"/><rect x="72" y="35" width="9" height="13" fill="#38e07a" opacity=".55"/><circle cx="37" cy="75" r="9" fill="#c7ccd1" stroke="#8d949b"/><circle cx="60" cy="75" r="9" fill="#c7ccd1" stroke="#8d949b"/><circle cx="84" cy="75" r="6.5" fill="#EB5F26"/><rect x="28" y="90" width="64" height="7" rx="2" fill="#3a3f45"/>',
+    // SpO2 Sensor Clip — spring clip with LED/photodetector window and trailing cable
+    sensor:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#1E6FA8" opacity=".07"/><path d="M42 24c-17 9-17 63 0 72" stroke="#e7eaec" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M78 24c17 9 17 63 0 72" stroke="#dfe3e6" stroke-width="12" fill="none" stroke-linecap="round"/><ellipse cx="60" cy="60" rx="15" ry="19" fill="#ffffff" stroke="#b7bdc3" stroke-width="2"/><circle cx="60" cy="54" r="4.5" fill="#EB5F26"/><circle cx="60" cy="66" r="3.5" fill="#1E6FA8"/><path d="M60 79c0 11 0 17 11 22" stroke="#8d949b" stroke-width="4" fill="none" stroke-linecap="round"/>',
+    // Defibrillator Paddle Set — two paddles with handles and shock symbol
+    paddle:'<rect x="8" y="8" width="104" height="104" rx="22" fill="#EB5F26" opacity=".07"/><rect x="24" y="16" width="28" height="48" rx="14" fill="#e7eaec" stroke="#b7bdc3" stroke-width="2"/><rect x="68" y="16" width="28" height="48" rx="14" fill="#e7eaec" stroke="#b7bdc3" stroke-width="2"/><circle cx="38" cy="38" r="9.5" fill="#EB5F26"/><circle cx="82" cy="38" r="9.5" fill="#EB5F26"/><rect x="33" y="66" width="10" height="32" rx="4" fill="#33383e"/><rect x="77" y="66" width="10" height="32" rx="4" fill="#33383e"/><path d="M43 80h34" stroke="#8d949b" stroke-width="3" stroke-linecap="round"/><path d="M56 102l4-11 4 7 4-11" stroke="#EB5F26" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+  };
+  function partCardHTML(p){
+    return `<div class="part-card">
+      <div class="part-thumb"><span class="part-cat-tag">${p.cat}</span><svg viewBox="0 0 120 120" fill="none" stroke-width="1.6">${icons[p.icon]}</svg></div>
+      <div class="part-body">
+        <span class="part-name">${p.name}</span>
+        <span class="part-sku mono">${p.sku}</span>
+        <span class="part-price">$${p.price}</span>
+        <button class="add-btn" data-sku="${p.sku}">Add to Cart</button>
+      </div>
+    </div>`;
+  }
+  function wireAddButtons(container){
+    container.querySelectorAll('.add-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        addToCart(btn.dataset.sku);
+        btn.textContent = 'Added ✓';
+        btn.classList.add('added');
+        setTimeout(()=>{ btn.textContent='Add to Cart'; btn.classList.remove('added'); }, 1100);
+      });
+    });
+  }
+  function renderGrid(elId, list){
+    const el = document.getElementById(elId);
+    if(!el) return;
+    el.innerHTML = list.length ? list.map(partCardHTML).join('') : '<p style="color:var(--muted); grid-column:1/-1;">No parts match your search.</p>';
+    wireAddButtons(el);
+  }
+  renderGrid('partsGridXray', parts.filter(p=>p.cat==='xray'));
+  renderGrid('partsGridDental', parts.filter(p=>p.cat==='dental'));
+ 
+  // Category pills
+  let activeCat = 'all';
+  const pillsEl = document.getElementById('catPills');
+  pillsEl.innerHTML = categories.map(c=>`<button class="cat-pill ${c.id==='all'?'active':''}" data-cat="${c.id}">${c.label}</button>`).join('');
+  pillsEl.querySelectorAll('.cat-pill').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      activeCat = btn.dataset.cat;
+      pillsEl.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+  function applyFilters(){
+    const q = document.getElementById('partSearch').value.toLowerCase();
+    const list = parts.filter(p=>
+      (activeCat==='all' || p.cat===activeCat) &&
+      (p.sku.toLowerCase().includes(q) || p.name.toLowerCase().includes(q))
+    );
+    renderGrid('partsGrid', list);
+  }
+  applyFilters();
+ 
+  // ---------- Cart ----------
+  let cart = [];
+  const cartDrawer = document.getElementById('cartDrawer');
+  const scrim = document.getElementById('scrim');
+  document.getElementById('cartToggle').addEventListener('click', ()=>{ cartDrawer.classList.add('open'); scrim.classList.add('open'); });
+  document.getElementById('cartClose').addEventListener('click', closeCart);
+  scrim.addEventListener('click', closeCart);
+  function closeCart(){ cartDrawer.classList.remove('open'); scrim.classList.remove('open'); }
+ 
+  function addToCart(sku){
+    const part = parts.find(p=>p.sku===sku);
+    const existing = cart.find(c=>c.sku===sku);
+    if(existing){ existing.qty++; } else { cart.push({...part, qty:1}); }
+    renderCart();
+  }
+  function changeQty(sku, delta){
+    const item = cart.find(c=>c.sku===sku);
+    if(!item) return;
+    item.qty += delta;
+    if(item.qty <= 0){ cart = cart.filter(c=>c.sku!==sku); }
+    renderCart();
+  }
+  function removeFromCart(sku){ cart = cart.filter(c=>c.sku!==sku); renderCart(); }
+  function renderCart(){
+    const itemsEl = document.getElementById('cartItems');
+    const totalEl = document.getElementById('cartTotal');
+    const countEl = document.getElementById('cartCount');
+    countEl.textContent = cart.reduce((s,c)=>s+c.qty,0);
+    if(cart.length===0){ itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty.</div>'; totalEl.textContent='$0'; return; }
+    itemsEl.innerHTML = cart.map(c=>`
+      <div class="cart-item">
+        <div>
+          <div><b>${c.name}</b></div>
+          <div class="mono" style="font-size:11px; color:var(--muted);">${c.sku}</div>
+          <button class="cart-item-remove" data-sku="${c.sku}">Remove</button>
+        </div>
+        <div style="text-align:right;">
+          <div class="stepper" style="margin-bottom:6px;">
+            <button type="button" data-sku="${c.sku}" data-d="-1" style="width:26px;height:28px;">−</button>
+            <span style="width:26px;">${c.qty}</span>
+            <button type="button" data-sku="${c.sku}" data-d="1" style="width:26px;height:28px;">+</button>
+          </div>
+          <div>$${c.price * c.qty}</div>
+        </div>
+      </div>`).join('');
+    itemsEl.querySelectorAll('.cart-item-remove').forEach(b=>b.addEventListener('click', ()=>removeFromCart(b.dataset.sku)));
+    itemsEl.querySelectorAll('.stepper button').forEach(b=>b.addEventListener('click', ()=>changeQty(b.dataset.sku, parseInt(b.dataset.d,10))));
+    totalEl.textContent = '$' + cart.reduce((s,c)=>s+c.price*c.qty,0);
+  }
+ 
+  const orderIcons = {
+    xray:'<path d="M4 5h16v14H4z"/><path d="M4 10.5h6l2-4 3 8 2-5 1.5 1h1.5"/>',
+    dental:'<path d="M8 17c0-6 2-10 4-10s4 4 4 10"/><path d="M6 17h12v3H6z"/>',
+    board:'<rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M9 4v3M15 4v3M9 17v3M15 17v3"/>',
+    monitor:'<rect x="3" y="5" width="18" height="12" rx="1.5"/><path d="M7 11l2 2 3-4 2 3 3-5"/>'
+  };
+  function goToCheckout(){
+    if(cart.length===0){ showToast('Your cart is empty.'); return; }
+    const itemsEl = document.getElementById('checkoutItems');
+    itemsEl.innerHTML = cart.map(c=>`<div class="order-row"><span class="oi-name"><span class="oi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${orderIcons[c.cat]||orderIcons.board}</svg></span>${c.name} × ${c.qty}</span><span>$${c.price*c.qty}</span></div>`).join('');
+    const subtotal = cart.reduce((s,c)=>s+c.price*c.qty,0);
+    document.getElementById('coSubtotal').textContent = '$'+subtotal;
+    document.getElementById('coTotal').textContent = '$'+(subtotal+10);
+    document.getElementById('payBtnLabel').textContent = 'Pay $'+(subtotal+10)+' Securely';
+    const steps = document.querySelectorAll('.checkout-steps .cstep');
+    if(steps.length===3){
+      steps[0].classList.add('done'); steps[0].classList.remove('current');
+      steps[1].classList.add('current'); steps[1].classList.remove('done');
+      steps[2].classList.remove('done','current');
+    }
+    goPage('checkout');
+  }
+ 
+  // ---------- Checkout: payment tabs + card formatting ----------
+  function switchPay(which){
+    document.getElementById('tabCard').classList.toggle('active', which==='card');
+    document.getElementById('tabUpi').classList.toggle('active', which==='upi');
+    document.getElementById('panelCard').classList.toggle('active', which==='card');
+    document.getElementById('panelUpi').classList.toggle('active', which==='upi');
+  }
+  const cardNum = document.getElementById('cardNum');
+  const cardExp = document.getElementById('cardExp');
+  const cardName = document.getElementById('cardName');
+  function detectNetwork(v){
+    if(/^4/.test(v)) return 'VISA';
+    if(/^5[1-5]/.test(v) || /^2[2-7]/.test(v)) return 'MASTERCARD';
+    if(/^6/.test(v)) return 'RUPAY';
+    if(/^3[47]/.test(v)) return 'AMEX';
+    return 'SECURE';
+  }
+  cardNum.addEventListener('input', ()=>{
+    let v = cardNum.value.replace(/\D/g,'').slice(0,16);
+    cardNum.value = v.replace(/(.{4})/g,'$1 ').trim();
+    document.getElementById('cardPreviewNum').textContent = (v.padEnd(16,'•')).replace(/(.{4})/g,'$1 ').trim();
+    document.getElementById('cardNetLabel').textContent = v.length ? detectNetwork(v) : 'SECURE';
+  });
+  cardExp.addEventListener('input', ()=>{
+    let v = cardExp.value.replace(/\D/g,'').slice(0,4);
+    if(v.length>=3) v = v.slice(0,2)+'/'+v.slice(2);
+    cardExp.value = v;
+    document.getElementById('cardPreviewExp').textContent = v || 'MM/YY';
+  });
+  cardName.addEventListener('input', ()=>{
+    document.getElementById('cardPreviewName').textContent = cardName.value.toUpperCase() || 'YOUR NAME';
+  });
+ 
+  // ---------- Card 3D tilt ----------
+  const cardVisual = document.querySelector('.card-visual');
+  if(cardVisual){
+    cardVisual.addEventListener('mousemove', (e)=>{
+      const r = cardVisual.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      cardVisual.style.transform = `perspective(600px) rotateY(${px*14}deg) rotateX(${-py*14}deg) scale(1.02)`;
+    });
+    cardVisual.addEventListener('mouseleave', ()=>{
+      cardVisual.style.transform = 'perspective(600px) rotateY(0) rotateX(0) scale(1)';
+    });
+  }
+ 
+  function placeOrder(){
+    const isCard = document.getElementById('panelCard').classList.contains('active');
+    if(isCard){
+      const numOk = cardNum.value.replace(/\s/g,'').length === 16;
+      const expOk = /^\d{2}\/\d{2}$/.test(cardExp.value);
+      const cvvOk = document.getElementById('cardCvv').value.length === 3;
+      if(!numOk || !expOk || !cvvOk){ showToast('Please check your card details.'); return; }
+    }
+    const btn = document.getElementById('placeOrderBtn');
+    btn.classList.add('loading');
+    btn.disabled = true;
+    setTimeout(()=>{
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      document.querySelectorAll('.checkout-steps .cstep').forEach((el,i)=>{
+        el.classList.toggle('done', i<3);
+        el.classList.remove('current');
+      });
+      document.getElementById('successModal').classList.add('open');
+    }, 1100);
+  }
+  function closeModal(){
+    document.getElementById('successModal').classList.remove('open');
+    cart = [];
+    renderCart();
+    goPage('home');
+  }
+ 
+  // ---------- AMC Calculator ----------
+  let amcUnits = 5;
+  function stepAMC(delta){
+    amcUnits = Math.max(1, Math.min(50, amcUnits + delta));
+    document.getElementById('amcUnits').textContent = amcUnits;
+    calcAMC();
+  }
+  function calcAMC(){
+    const base = parseInt(document.getElementById('amcTier').value, 10);
+    const xray = parseInt(document.getElementById('amcXray').value, 10);
+    const perUnit = 180;
+    const total = base + xray + (amcUnits * perUnit);
+    document.getElementById('amcTotal').textContent = total.toLocaleString('en-IN');
+  }
+  calcAMC();
+ 
+  // ---------- Testimonial carousel ----------
+  const testimonials = document.querySelectorAll('#trustSection .testimonial-card');
+  const dotsEl = document.getElementById('carouselDots');
+  let tIndex = 0, tTimer;
+  if(testimonials.length){
+    dotsEl.innerHTML = Array.from(testimonials).map((_,i)=>`<button data-i="${i}" class="${i===0?'active':''}"></button>`).join('');
+    function showTestimonial(i){
+      testimonials.forEach((el,idx)=>el.classList.toggle('active', idx===i));
+      dotsEl.querySelectorAll('button').forEach((b,idx)=>b.classList.toggle('active', idx===i));
+      tIndex = i;
+    }
+    dotsEl.querySelectorAll('button').forEach(b=>b.addEventListener('click', ()=>{ showTestimonial(parseInt(b.dataset.i,10)); resetTimer(); }));
+    function resetTimer(){ clearInterval(tTimer); tTimer = setInterval(()=> showTestimonial((tIndex+1)%testimonials.length), 5000); }
+    resetTimer();
+  }
+ 
+  // ---------- Toast ----------
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2800);
+  }
+ 
+  // ---------- Init ----------
+  renderCart();
+  initReveal();
+</script>
+</body>
+</html>
+ 
